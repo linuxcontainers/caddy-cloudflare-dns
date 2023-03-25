@@ -1,12 +1,9 @@
 name: Publish to Docker Hub
 
-# Controls when the action will be run
 on:
-  # triggers on push or pull request events on main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -45,7 +42,7 @@ jobs:
         with:
           context: ./
           file: ./Dockerfile
-          platforms: linux/arm/v7,linux/arm64,linux/amd64
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
