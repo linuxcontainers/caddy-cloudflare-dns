@@ -24,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/cloudflare-ddns
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/caddy-cloudflare-dns
           tags: |
             type=semver,pattern={{version}}
             type=raw,value={{date 'YY.MM.DD'}}
